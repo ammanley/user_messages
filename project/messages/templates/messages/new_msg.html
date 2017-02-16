@@ -1,0 +1,15 @@
+{%  extends 'base.html'  %}
+{%  block content  %}
+<h1>New Message</h1>
+<form action = "{{url_for('show_msgs', id=id )}}", method = 'POST'>
+<!-- <form action = "index2.html", method = 'POST'> -->
+{{  msg.hidden_tag()  }}
+{%  for field in msg if field.widget.input_type != 'hidden' %}
+	<p>
+		{{field.label}}: {{field}}
+	</p>
+
+{%  endfor  %}
+<button type='submit'>Send New Message</button>
+</form>
+{%  endblock  %}

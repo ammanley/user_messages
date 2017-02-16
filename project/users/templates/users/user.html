@@ -1,0 +1,11 @@
+{%  extends 'base.html'  %}
+{%  block content  %}
+<h1>User {{user.username}}</h1>
+<p>Email: {{user.email}}</p>
+<p>First Name: {{user.first_name}}</p>
+<p>Last Name: {{user.last_name}}</p>
+
+<button> <a href= '/users/{{user.id}}/edit'>Edit</a></button>
+<button> <a href= '{{url_for('index')}}')}}'>Back To Users</a></button>
+
+{%  endblock  %}

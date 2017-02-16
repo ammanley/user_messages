@@ -1,0 +1,16 @@
+{%  extends 'base.html'  %}
+{%  block content  %}
+
+<h1>Messages</h1>
+<button> <a href = "{{url_for('new_msg', id = id)}}" >Send A New Message</a> </button>
+<button><a href = "{{url_for('index')}}">Back To Users</a></button>
+{%  for message in messages    %}
+	
+	<p>{{message}} 
+	<button><a href = "{{url_for('msg_id', id = message.user.id, msg_id=message.id )}}">Go To Message</a></button>
+
+	</p>
+
+{%  endfor  %}
+
+{%  endblock  %}
