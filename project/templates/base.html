@@ -5,8 +5,10 @@
 	<title>Base</title>
 </head>
 <body>
-	
-	{%  block content  %}
-	{%  endblock  %}
+{%  for message in get_flashed_messages()  %}
+{{message}}
+{%  endfor  %}
+{%  block content  %}
+{%  endblock  %}
 </body>
 </html>

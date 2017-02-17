@@ -1,4 +1,4 @@
-from app import app,db 
+from project import app,db 
 
 # let's import the Manager class from flask_script 
 # which comes with flask_migrate. We will use this 
