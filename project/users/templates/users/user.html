@@ -6,6 +6,7 @@
 <p>Last Name: {{user.last_name}}</p>
 
 <button> <a href= '/users/{{user.id}}/edit'>Edit</a></button>
-<button> <a href= '{{url_for('index')}}')}}'>Back To Users</a></button>
+<button><a href = "{{url_for('messages.show', id=id)}}">Back To User Messages</a> </button>
+<button> <a href= '{{url_for('users.index')}}')}}'>Back To Users</a></button>
 
 {%  endblock  %}

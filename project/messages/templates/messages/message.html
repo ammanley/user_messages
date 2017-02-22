@@ -1,16 +1,18 @@
 {%  extends 'base.html'  %}
 {%  block content  %}
 
-<h1>Message {{messages.msg_id}}</h1>
+<h1>User {{user.username}} Messages {{messages.msg_id}}</h1>
 
 {%  for message in messages  %}
 
-	<p>{{message}}<form action = "{{url_for('msg_id', id = id, msg_id = msg_id)}}?_method=DELETE", method='POST'>
-		<button type = 'submit'>Delete Message</button>
+	<p>{{message}} <button> <a href = '{{url_for('messages.edit', id=id, msg_id=message.id)}}'>Edit</a> </button>
+
 	</form>
 	</p>
-
-
 {%  endfor  %}
+
+<button> <a href = '{{url_for('messages.new', id = user.id)}}''>New Message</a> </button>
+<button> <a href = '{{url_for('users.show', id = user.id)}}''>Back To User Profile</a> </button>
+<button> <a href = '{{url_for('users.index')}}''>Back To Users</a> </button>
 
 {%  endblock  %}

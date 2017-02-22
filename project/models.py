@@ -1,10 +1,13 @@
-from project import db
+from project import db, bcrypt
+from flask_login import UserMixin
 
-class User(db.Model):
+
+class User(db.Model, UserMixin):
     __tablename__ = 'users'
-    # Why are these accesspible on the CLASS INSTANCE like __init__ properties
+
     id = db.Column(db.Integer, primary_key = True)
     username = db.Column(db.Text)
+    password = db.Column(db.Text)
     email = db.Column(db.Text)
     first_name = db.Column(db.Text)
     last_name = db.Column(db.Text)
@@ -13,21 +16,23 @@ class User(db.Model):
     @classmethod
     def new_for_form(cls,form):
         return User(form.username.data,
+                    form.password.data,
                     form.email.data,
                     form.first_name.data,
                     form.last_name.data)
 
-    def __init__(self, username, email, first_name, last_name):
+    def __init__(self, username, password, email, first_name, last_name):
         self.username = username
         self.email = email
         self.first_name = first_name
         self.last_name = last_name
+        self.password = bcrypt.generate_password_hash(password).decode('UTF-8')
         
 
     def __repr__(self):
         return "ID: {}   Username: {}, Email: {}, First Name: {}, Last Name: {}".format(self.id, self.username, self.email, self.first_name,self.last_name)
 
-class Message(db.Model):
+class Message(db.Model, UserMixin):
     __tablename__ = 'messages'
 
     id = db.Column(db.Integer, primary_key = True)

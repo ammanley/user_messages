@@ -1,8 +1,8 @@
 {%  extends 'base.html'  %}
 {%  block content  %}
-<h1>Edit A User</h1>
+<h1>Edit Message</h1>
 
-<form action = "{{url_for('show', id=user.id )}}?_method=PATCH", method = 'POST'>
+<form action = "{{url_for('messages.msg_id', id=id, msg_id=msg_id )}}?_method=PATCH", method = 'POST'>
 
 	{{ form.hidden_tag() }}
 	{%  for form_field in form if form_field.widget.input_type != 'hidden' %}
@@ -18,14 +18,14 @@
 	</p>
 
 {%  endfor  %}
-<button type='submit'>Submit</button>
+<button type='submit'>Submit Edits</button>
 
 </form>
 
-<button><a href = '{{url_for('index')}}'>Back To User List</a> </button>
+<button><a href = "{{url_for('messages.show', id=id)}}">Back To User Messages</a> </button>
 
 
-<form action = "{{url_for('show', id=user.id )}}?_method=DELETE", method = 'POST'>
+<form action = "{{url_for('messages.msg_id', id=id, msg_id=msg_id)}}?_method=DELETE", method = 'POST'>
 {{ form.hidden_tag() }}
 <button type='submit'> Delete </button>
 </form>

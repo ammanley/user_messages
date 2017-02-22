@@ -2,7 +2,7 @@
 {%  block content  %}
 <h1>Edit A User</h1>
 
-<form action = "{{url_for('show', id=user.id )}}?_method=PATCH", method = 'POST'>
+<form action = "{{url_for('users.show', id=user.id )}}?_method=PATCH", method = 'POST'>
 
 	{{ form.hidden_tag() }}
 	{%  for form_field in form if form_field.widget.input_type != 'hidden' %}
@@ -22,10 +22,10 @@
 
 </form>
 
-<button><a href = '{{url_for('index')}}'>Back To User List</a> </button>
+<button><a href = '{{url_for('users.index')}}'>Back To User List</a> </button>
 
 
-<form action = "{{url_for('show', id=user.id )}}?_method=DELETE", method = 'POST'>
+<form action = "{{url_for('users.show', id=user.id )}}?_method=DELETE", method = 'POST'>
 {{ form.hidden_tag() }}
 <button type='submit'> Delete </button>
 </form>
